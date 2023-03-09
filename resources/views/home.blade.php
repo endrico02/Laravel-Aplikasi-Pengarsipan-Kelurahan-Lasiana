@@ -82,33 +82,36 @@
                     <ul class="navbar-nav float-left me-auto ms-3 ps-1">
                         <!-- Notification -->
                         @if (Auth::user()->role == 2)
+                        <?php
+                            $data = \DB::select("SELECT * FROM tamu WHERE opr_notif='2'") 
+                        ?>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 <span><i data-feather="bell" class="svg-icon"></i></span>
-                                <span class="badge text-bg-primary notify-no rounded-circle">5</span>
+                                <span class="badge text-bg-primary notify-no rounded-circle">{{ count($data) }}</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
                                         <div class="message-center notifications position-relative">
-                                        
+                                           
+                                            @foreach ($data as $item)
                                             <a href="javascript:void(0)"
                                                 class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                 <div class="btn btn-danger rounded-circle btn-circle"><i
                                                         data-feather="airplay" class="text-white"></i></div>
                                                 <div class="w-75 d-inline-block v-middle ps-2">
-                                                    <h6 class="message-title mb-0 mt-1">Luanch Admin</h6>
-                                                    <span class="font-12 text-nowrap d-block text-muted">Just see
-                                                        the my new
-                                                        admin!</span>
-                                                    <span class="font-12 text-nowrap d-block text-muted">9:30 AM</span>
+                                                    <h6 class="message-title mb-0 mt-1">{{ $item->nama }} </h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted">Pengurusan {{ $item->perihal }}</span>
+                                                    <span class="font-12 text-nowrap d-block text-muted">{{ $item->tanggal }}</span>
                                                 </div>
                                             </a>
+                                            @endforeach
                                         
-                                            <a href="javascript:void(0)"
+                                            {{-- <a href="javascript:void(0)"
                                                 class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                                 <span class="btn btn-success text-white rounded-circle btn-circle"><i
                                                         data-feather="calendar" class="text-white"></i></span>
@@ -145,12 +148,12 @@
                                                         see the my admin!</span>
                                                     <span class="font-12 text-nowrap d-block text-muted">9:02 AM</span>
                                                 </div>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link pt-3 text-center text-dark" href="javascript:void(0);">
-                                            <strong>Check all notifications</strong>
+                                        <a class="nav-link pt-3 text-center text-dark" href="pengurusan_surat">
+                                            <strong>Check all Request</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
                                     </li>
@@ -253,10 +256,11 @@
                         
                         @endif
                         @if(Auth::user()->role == 2)
-                        <li class="sidebar-item"> <a class="sidebar-link" href="pengurusan_surat"
-                                aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
-                                    class="hide-menu">Pengurusan Surat
-                                </span></a>
+                        <li class="sidebar-item"> 
+                            <a class="sidebar-link" href="pengurusan_surat" aria-expanded="false">
+                                <i data-feather="file-text" class="feather-icon"></i>
+                                <span class="hide-menu">Pengurusan Surat</span>
+                            </a>
                         </li>
                         
                         @endif

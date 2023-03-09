@@ -71,7 +71,8 @@
     function store(){
         var nama    = $("#nama").val();
         var alamat  = $("#alamat").val();
-        var data    = "nama="+nama+"&alamat="+alamat;
+        var perihal = $("#perihal").val();
+        var data    = "nama="+nama+"&alamat="+alamat+"&perihal="+perihal;
         $.ajax({
             type    : "get",
             url     : "data_tamu/store",

@@ -28,9 +28,9 @@
 
     <div class="form-group mb-3">
         <label class="form-label" for="password">Perihal</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>Surat Keterangan Usaha</option>
-            <option>Surat Domisili</option>
+        <select class="form-control" id="perihal" name="perihal">
+            <option value="Surat Keterangan Usaha">Surat Keterangan Usaha</option>
+            <option value="Surat Domisili">Surat Domisili</option>
         </select>
     </div>
     <div class="form-group mb-3">

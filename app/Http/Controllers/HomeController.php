@@ -49,7 +49,9 @@ class HomeController extends Controller
         $data['no_antrian']     = $no;
         $data['nama']           = $request->nama;
         $data['alamat']         = $request->alamat;
+        $data['perihal']        = $request->perihal;
         $data['tanggal']        = $tgl_now;
+        $data['opr_notif']      = 2;
         Tamu::insert($data);
     }
 }
